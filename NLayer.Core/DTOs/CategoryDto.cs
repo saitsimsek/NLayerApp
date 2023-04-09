@@ -11,3 +11,4 @@ namespace NLayer.Core.DTOs
         public string Name { get; set; }
     }
 }
+ 

@@ -14,7 +14,5 @@ namespace NLayer.Core.Models
         public int Width { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
-
-
     }
 }
