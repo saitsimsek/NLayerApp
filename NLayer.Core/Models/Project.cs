@@ -12,7 +12,10 @@ namespace NLayer.Core.Models
         public string Purpose { get; set; } // Amaç
         public string Unit { get; set; }
         public string Description { get; set; }
-        
+        public int ApprovalStatusId { get; set; }
+        public ApprovalStatus ApprovalStatus { get; set; }
+
+
 
     }
 }

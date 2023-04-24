@@ -15,7 +15,8 @@ namespace NLayer.Core.Models
         public string Description { get; set; }
         public bool Outsource { get; set; }
         public int? Time { get; set; }
-
+        public bool Abroad { get; set; }
+        public string ProspectiveCustomer { get; set;} // Muhtemel Müşteri
 
     }
 }

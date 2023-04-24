@@ -14,7 +14,8 @@ namespace NLayer.Core.Models
         public string AvailableTRL { get; set; }
         public string GoalTRL { get; set; }
         public string AvailableTRLDocumentation { get; set; }
-       
+        public string RiskPlan { get; set; }
+        public string ImportantConsiderations { get; set; } // Önemli Hususlar
 
 
     }
