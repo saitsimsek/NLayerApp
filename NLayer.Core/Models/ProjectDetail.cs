@@ -14,5 +14,8 @@ namespace NLayer.Core.Models
         public string AvailableTRL { get; set; }
         public string GoalTRL { get; set; }
         public string AvailableTRLDocumentation { get; set; }
+       
+
+
     }
 }
