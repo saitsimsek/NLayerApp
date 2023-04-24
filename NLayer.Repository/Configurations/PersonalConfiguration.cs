@@ -18,11 +18,13 @@ namespace NLayer.Repository.Configurations
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
             builder.Property(x => x.SurName).IsRequired().HasMaxLength(100);
-            builder.Property(x => x.RegistrationNumber);
-            builder.Property(x => x.Email);
-            builder.Property(x => x.PhoneNumber);
-            builder.Property(x => x.Position);
-            builder.Property(x => x.Description);
-    }
+            builder.Property(x => x.RegistrationNumber).HasMaxLength(20);
+            builder.Property(x => x.Email).HasMaxLength(100); ;
+            builder.Property(x => x.PhoneNumber).HasMaxLength(20); 
+            builder.Property(x => x.Position).HasMaxLength(100); 
+            builder.Property(x => x.CreatedDate).IsRequired();
+            builder.Property(x => x.UpdatedDate).IsRequired();
+            builder.Property(x => x.State).IsRequired();
+        }
     }
 }
