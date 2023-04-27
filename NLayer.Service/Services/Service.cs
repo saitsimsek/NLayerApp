@@ -49,12 +49,12 @@ namespace NLayer.Service.Services
 
         public async Task<T> GetByIdAsync(int id)
         {
-           var hasProduct = await _repository.GetByIdAsync(id);
-            if (hasProduct==null)
+           var hasPersonal = await _repository.GetByIdAsync(id);
+            if (hasPersonal==null)
             {
                 throw new ClientSideException($"{typeof(T).Name}({id}) not found");
             }
-            return hasProduct;
+            return hasPersonal;
         }
 
         public async Task RemoveAsync(T entity)
