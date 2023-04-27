@@ -2,52 +2,52 @@
 
 namespace NLayer.Web.Services
 {
-    public class ProductApiService
+    public class PersonalApiService
     {
         private readonly HttpClient _httpClient;
 
-        public ProductApiService(HttpClient httpClient)
+        public PersonalApiService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        public async Task<List<ProductWithCategoryDto>> GetProductsWithCategoryAsync()
+        public async Task<List<PersonalWithProjetsDto>> GetPersonalsWithProjectsAsync()
         {
-            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<List<ProductWithCategoryDto>>>("products/GetProductsWithCategory");
+            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<List<PersonalWithProjetsDto>>>("personals/GetPersonalsWithCategory");
 
             return response.Data;
         }
 
-        public async Task<ProductDto> GetByIdAsync(int id)
+        public async Task<PersonalDto> GetByIdAsync(int id)
         {
 
-            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<ProductDto>>($"products/{id}");
+            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<PersonalDto>>($"personals/{id}");
             return response.Data;
 
 
         }
 
-        public async Task<ProductDto> SaveAsync(ProductDto newProduct)
+        public async Task<PersonalDto> SaveAsync(PersonalDto newPersonal)
         {
-            var response = await _httpClient.PostAsJsonAsync("products", newProduct);
+            var response = await _httpClient.PostAsJsonAsync("personals", newPersonal);
 
             if (!response.IsSuccessStatusCode) return null;
 
-            var responseBody = await response.Content.ReadFromJsonAsync<CustomResponseDto<ProductDto>>();
+            var responseBody = await response.Content.ReadFromJsonAsync<CustomResponseDto<PersonalDto>>();
 
             return responseBody.Data;
 
 
         }
-        public async Task<bool> UpdateAsync(ProductDto newProduct)
+        public async Task<bool> UpdateAsync(PersonalDto newPersonal)
         {
-            var response = await _httpClient.PutAsJsonAsync("products", newProduct);
+            var response = await _httpClient.PutAsJsonAsync("personals", newPersonal);
 
             return response.IsSuccessStatusCode;
         }
         public async Task<bool> RemoveAsync(int id)
         {
-            var response = await _httpClient.DeleteAsync($"products/{id}");
+            var response = await _httpClient.DeleteAsync($"personals/{id}");
 
             return response.IsSuccessStatusCode;
         }

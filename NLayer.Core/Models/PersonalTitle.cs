@@ -9,5 +9,7 @@ namespace NLayer.Core.Models
     public class PersonalTitle : BaseEntity
     {
         public string Title { get; set; }
+        //public ICollection<ProjectPersonal> ProjectPersonals { get; set; }
+
     }
 }

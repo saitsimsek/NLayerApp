@@ -8,70 +8,70 @@ using NLayer.Web.Services;
 
 namespace NLayer.Web.Controllers
 {
-    public class ProductsController : Controller
+    public class PersonalsController : Controller
     {
-        private readonly ProductApiService _productApiService;
-        private readonly CategoryApiService _categoryApiService;
+        private readonly PersonalApiService _personalApiService;
+        private readonly ProjectApiService _projectApiService;
 
-        public ProductsController(CategoryApiService categoryApiService, ProductApiService productApiService)
+        public PersonalsController(ProjectApiService projectApiService, PersonalApiService personalApiService)
         {
-            _categoryApiService = categoryApiService;
-            _productApiService = productApiService;
+            _projectApiService = projectApiService;
+            _personalApiService = personalApiService;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _productApiService.GetProductsWithCategoryAsync());
+            return View(await _personalApiService.GetPersonalsWithProjectsAsync());
         }
 
         public async Task<IActionResult> Save()
         {
-            var categoriesDto = await _categoryApiService.GetAllAsync();
-            ViewBag.categories = new SelectList(categoriesDto, "Id", "Name");
+            var productsDto = await _projectApiService.GetAllAsync();
+            ViewBag.products = new SelectList(productsDto, "Id", "Name");
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(ProductDto productDto)
+        public async Task<IActionResult> Save(PersonalDto personalDto)
         {
             if (ModelState.IsValid)
             {
-                await _productApiService.SaveAsync(productDto);
+                await _personalApiService.SaveAsync(personalDto);
                 return RedirectToAction(nameof(Index));
             }
 
-            var categoryiesDto = await _categoryApiService.GetAllAsync();
-            ViewBag.categories = new SelectList(categoryiesDto, "Id", "Name");
+            var projectsDto = await _projectApiService.GetAllAsync();
+            ViewBag.products = new SelectList(projectsDto, "Id", "Name");
             return View();
         }
 
 
-        [ServiceFilter(typeof(NotFoundFilter<Product>))]
+        //[ServiceFilter(typeof(NotFoundFilter<Personal>))]
         public async Task<IActionResult> Update(int id)
         {
-            var product = await _productApiService.GetByIdAsync(id);
-            var categoryiesDto = await _categoryApiService.GetAllAsync();
-            ViewBag.categories = new SelectList(categoryiesDto, "Id", "Name", product.CategoryId);
-            return View(product);
+            var personal = await _personalApiService.GetByIdAsync(id);
+            var projectsDto = await _projectApiService.GetAllAsync();
+            ViewBag.products = new SelectList(projectsDto, "Id", "Name", personal.Id);
+            return View(personal);
 
         }
         [HttpPost]
-        public async Task<IActionResult> Update(ProductDto productDto)
+        public async Task<IActionResult> Update(PersonalDto personalDto)
         {
             if (ModelState.IsValid)
             {
-                await _productApiService.UpdateAsync(productDto);
+                await _personalApiService.UpdateAsync(personalDto);
                 return RedirectToAction(nameof(Index));
             }
-            var categoryiesDto = await _categoryApiService.GetAllAsync();
-            ViewBag.categories = new SelectList(categoryiesDto, "Id", "Name", productDto.CategoryId);
-            return View(productDto);
+            var projectsDto = await _projectApiService.GetAllAsync();
+            ViewBag.products = new SelectList(projectsDto, "Id", "Name", personalDto.Id);
+            return View(personalDto);
         }
 
 
         public async Task<IActionResult> Remove(int id)
         {
-            await _productApiService.RemoveAsync(id);
+            await _personalApiService.RemoveAsync(id);
             return RedirectToAction(nameof(Index));
         }
 

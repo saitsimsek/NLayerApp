@@ -1,10 +1,8 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using NLayer.Repository;
 using NLayer.Service.Mapping;
-using NLayer.Service.Validations;
 using NLayer.Web;
 using NLayer.Web.Modules;
 using NLayer.Web.Services;
@@ -13,7 +11,7 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidator>()); ;
+//builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PersonalDtoValidator>()); ;
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
@@ -24,11 +22,11 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 });
 
 
-builder.Services.AddHttpClient<ProductApiService>(opt =>
+builder.Services.AddHttpClient<PersonalApiService>(opt =>
 {
     opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
 });
-builder.Services.AddHttpClient<CategoryApiService>(opt =>
+builder.Services.AddHttpClient<ProjectApiService>(opt =>
 {
     opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
 });
@@ -45,7 +43,7 @@ app.UseExceptionHandler("/Home/Error");
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    // The default HSTS value is 30 days. You may want to change this for personalion scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

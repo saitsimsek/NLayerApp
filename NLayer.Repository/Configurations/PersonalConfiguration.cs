@@ -15,7 +15,7 @@ namespace NLayer.Repository.Configurations
         public void Configure(EntityTypeBuilder<Personal> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
+            //builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
             builder.Property(x => x.SurName).IsRequired().HasMaxLength(100);
             builder.Property(x => x.RegistrationNumber).HasMaxLength(20);
@@ -25,6 +25,9 @@ namespace NLayer.Repository.Configurations
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();
             builder.Property(x => x.State).IsRequired();
+
+            builder.ToTable("Personals");
+
         }
     }
 }

@@ -12,7 +12,8 @@ namespace NLayer.Core.Models
         public Project Project { get; set; }
         public Guid PersonalId { get; set; }
         public Personal Personal { get; set; }
-        public Guid PersonalTitlelId { get; set; }
+        public Guid PersonalTitleId { get; set; }
         public PersonalTitle PersonalTitle { get; set; }
+
     }
 }

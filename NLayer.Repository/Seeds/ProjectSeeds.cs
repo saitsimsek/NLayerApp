@@ -21,10 +21,11 @@ namespace NLayer.Repository.Seeds
                 Purpose = "Proje A Purpose",
                 Unit = "Proje A Unit",
                 Description = "Proje A Description",
+                ApprovalStatusId = 1,
                 CreatedDate = DateTime.Now,
-                CreatedPersonalId = Guid.Empty,
+                CreatedPersonalId =Guid.Parse("00000000-0000-0000-0000-000000000001"),
                 UpdatedDate = DateTime.Now,
-                UpdatedPersonalId = Guid.Empty,
+                UpdatedPersonalId =Guid.Parse("00000000-0000-0000-0000-000000000001"),
                 State = true
             },
              new Project()
@@ -34,10 +35,11 @@ namespace NLayer.Repository.Seeds
                  Purpose = "Proje B Purpose",
                  Unit = "Proje B Unit",
                  Description = "Proje B Description",
+                 ApprovalStatusId = 1,
                  CreatedDate = DateTime.Now,
-                 CreatedPersonalId = Guid.Empty,
+                 CreatedPersonalId =Guid.Parse("00000000-0000-0000-0000-000000000001"),
                  UpdatedDate = DateTime.Now,
-                 UpdatedPersonalId = Guid.Empty,
+                 UpdatedPersonalId =Guid.Parse("00000000-0000-0000-0000-000000000001"),
                  State = true
              },
             new Project()
@@ -47,10 +49,11 @@ namespace NLayer.Repository.Seeds
                 Purpose = "Proje C Purpose",
                 Unit = "Proje C Unit",
                 Description = "Proje C Description",
+                ApprovalStatusId = 1,
                 CreatedDate = DateTime.Now,
-                CreatedPersonalId = Guid.Empty,
+                CreatedPersonalId =Guid.Parse("00000000-0000-0000-0000-000000000001"),
                 UpdatedDate = DateTime.Now,
-                UpdatedPersonalId = Guid.Empty,
+                UpdatedPersonalId =Guid.Parse("00000000-0000-0000-0000-000000000001"),
                 State = true
             });
         }

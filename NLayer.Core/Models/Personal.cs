@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,23 @@ namespace NLayer.Core.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public bool State { get; set; }
+
+        public ICollection<Project> ProjectsCreated { get; set; }
+        public ICollection<Project> ProjectsUpdated { get; set; }
+        [NotMapped]
+        public ICollection<PersonalTitle> PersonalTitlesCreated { get; set; }
+        [NotMapped]
+        public ICollection<PersonalTitle> PersonalTitlesUpdated { get; set; }
+        [NotMapped]
+        public ICollection<ProjectDetail> ProjectDetailsCreated { get; set; }
+        [NotMapped]
+        public ICollection<ProjectDetail> ProjectDetailsUpdated { get; set; }
+
+        [NotMapped]
+        public ICollection<ProjectPersonal> ProjectPersonalsCreated { get; set; }
+        [NotMapped]
+        public ICollection<ProjectPersonal> ProjectPersonalsUpdated { get; set; }
+
 
 
     }

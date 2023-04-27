@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayer.Core.Repositories
+namespace NLayer.Core.DTOs
 {
-    public interface IProductRepository:IGenericRepository<Product>
+    public class PersonalWithProjetsDto : PersonalDto
     {
-        Task<List<Product>> GetProductsWithCategory();
+        public List<ProjectDto> Projects { get; set; }
     }
+  
 }

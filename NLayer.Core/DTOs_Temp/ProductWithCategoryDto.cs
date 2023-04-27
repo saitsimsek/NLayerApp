@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayer.Core.DTOs
+namespace NLayer.Core.DTOs_Temp
 {
-    public class CategoryDto:BaseDto
+    public class ProductWithCategoryDto : ProductDto
     {
-        public string Name { get; set; }
+        public CategoryDto Category { get; set; }
     }
 }
- 

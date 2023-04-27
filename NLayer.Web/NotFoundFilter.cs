@@ -26,7 +26,7 @@ namespace NLayer.Web
                 return;
             }
 
-            var id = (int)idValue;
+            var id = (Guid)idValue;
             var anyEntity = await _service.AnyAsync(x => x.Id == id);
 
             if (anyEntity)

@@ -13,16 +13,13 @@ namespace NLayer.Repository
 
         //public DbSet<Category> Categories { get; set; }
         //public DbSet<Product> Products { get; set; }
-        public DbSet<ProductFeature> ProductFeatures { get; set; }
+        //public DbSet<ProductFeature> ProductFeatures { get; set; }
 
         public DbSet<Project> Projects { get; set; }
         public DbSet<Personal> Personals { get; set; }
         public DbSet<ProjectPersonal> ProjectPersonals { get; set; }
-        public DbSet<ProjectDetail> ProjectDetail { get; set; }
-        public DbSet<PersonalTitle> PersonalTitle { get; set; }
-
-        
-            
+        public DbSet<ProjectDetail> ProjectDetails { get; set; }
+        //public DbSet<PersonalTitle> PersonalTitles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

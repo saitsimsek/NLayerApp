@@ -9,64 +9,64 @@ namespace NLayer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : CustomBaseController
+    public class ProjectsController : CustomBaseController
     {
         private readonly IMapper _mapper;
-        private readonly ICategoryService _service;
-        public CategoriesController(IMapper mapper, ICategoryService categoryService)
+        private readonly IProjectService _service;
+        public ProjectsController(IMapper mapper, IProjectService ProjectService)
         {
 
             _mapper = mapper;
-            _service = categoryService;
+            _service = ProjectService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var categories = await _service.GetAllAsync();
-            var categoryDtos = _mapper.Map<List<CategoryDto>>(categories.ToList());
-            return CreateActionResult(CustomResponseDto<List<CategoryDto>>.Success(200, categoryDtos));
+            var Projects = await _service.GetAllAsync();
+            var ProjectDtos = _mapper.Map<List<ProjectDto>>(Projects.ToList());
+            return CreateActionResult(CustomResponseDto<List<ProjectDto>>.Success(200, ProjectDtos));
         }
 
-        //Get /api/category/5
-        [ServiceFilter(typeof(NotFoundFilter<Category>))]
+        //Get /api/Project/5
+        [ServiceFilter(typeof(NotFoundFilter<Project>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByID(int id)
         {
-            var category = await _service.GetByIdAsync(id);
-            var categoryDto = _mapper.Map<CategoryDto>(category);
-            return CreateActionResult(CustomResponseDto<CategoryDto>.Success(200, categoryDto));
+            var Project = await _service.GetByIdAsync(id);
+            var ProjectDto = _mapper.Map<ProjectDto>(Project);
+            return CreateActionResult(CustomResponseDto<ProjectDto>.Success(200, ProjectDto));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(CategoryDto categoryDto)
+        public async Task<IActionResult> Save(ProjectDto ProjectDto)
         {
-            var category = await _service.AddAsync(_mapper.Map<Category>(categoryDto));
-            var categoriesDto = _mapper.Map<CategoryDto>(category);
-            return CreateActionResult(CustomResponseDto<CategoryDto>.Success(201, categoriesDto));
+            var Project = await _service.AddAsync(_mapper.Map<Project>(ProjectDto));
+            var ProjectsDto = _mapper.Map<ProjectDto>(Project);
+            return CreateActionResult(CustomResponseDto<ProjectDto>.Success(201, ProjectsDto));
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(CategoryDto categoryDto)
+        public async Task<IActionResult> Update(ProjectDto ProjectDto)
         {
-            await _service.UpdateAsync(_mapper.Map<Category>(categoryDto));
+            await _service.UpdateAsync(_mapper.Map<Project>(ProjectDto));
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
-        //Delete /api/category/5
-        [ServiceFilter(typeof(NotFoundFilter<Category>))]
+        //Delete /api/Project/5
+        [ServiceFilter(typeof(NotFoundFilter<Project>))]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {
-            var category = await _service.GetByIdAsync(id);
-            await _service.RemoveAsync(category);
+            var Project = await _service.GetByIdAsync(id);
+            await _service.RemoveAsync(Project);
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
-        //// Get /api/category/GetSingleCategoryByIdWithProductsAsync
-        [HttpGet("GetSingleCategoryByIdWithProductsAsync")]
-        public async Task<IActionResult> GetSingleCategoryByIdWithProductsAsync(int id)
+        //// Get /api/Project/GetProjectByIdWithDetailsAsync
+        [HttpGet("GetProjectByIdWithDetailsAsync")]
+        public async Task<IActionResult> GetProjectByIdWithDetailsAsync(int id)
         {
-            return CreateActionResult(await _service.GetSingleCategoryByIdWithProductsAsync(id));
+            return CreateActionResult(await _service.GetProjectByIdWithDetailsAsync(id));
         }
 
 
