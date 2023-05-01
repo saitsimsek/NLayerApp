@@ -13,8 +13,14 @@ namespace NLayer.Web.Services
 
         public async Task<List<PersonalWithProjetsDto>> GetPersonalsWithProjectsAsync()
         {
-            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<List<PersonalWithProjetsDto>>>("personals/GetPersonalsWithCategory");
+            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<List<PersonalWithProjetsDto>>>("personals/GetPersonalWithProjets");
 
+            return response.Data;
+        }
+
+        public async Task<List<PersonalDto>> GetAllAsync()
+        {
+            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<List<PersonalDto>>>("personals");
             return response.Data;
         }
 

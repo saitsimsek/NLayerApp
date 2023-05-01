@@ -15,5 +15,10 @@ namespace NLayer.Repository.Repository
             return await _context.Projects.Include(i => i.ProjectDetails).ToListAsync();
         }
 
+        public async Task<List<ApprovalStatus>> GetAllApprovalStatusAsync()
+        {
+            return await _context.ApprovalStatuses.Where(w=>w.State).ToListAsync();
+        }
+
     }
 }

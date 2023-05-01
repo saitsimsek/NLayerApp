@@ -47,7 +47,7 @@ namespace NLayer.Service.Services
             return await _repository.GetAll().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
            var hasPersonal = await _repository.GetByIdAsync(id);
             if (hasPersonal==null)

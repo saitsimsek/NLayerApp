@@ -41,7 +41,7 @@ namespace NLayer.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ApprovalStatus");
+                    b.ToTable("ApprovalStatuses");
 
                     b.HasData(
                         new
@@ -133,7 +133,7 @@ namespace NLayer.Repository.Migrations
                         new
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1847),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3432),
                             Description = "Admin Description",
                             Email = "admin@gmail.com",
                             Name = "Admin Name 1",
@@ -142,12 +142,12 @@ namespace NLayer.Repository.Migrations
                             RegistrationNumber = "000",
                             State = true,
                             SurName = "Admin SurName 1",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1864)
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3446)
                         },
                         new
                         {
                             Id = new Guid("2f09bf40-1528-4980-900f-716914abfbf2"),
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1877),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3454),
                             Description = "Personal 1 Description",
                             Email = "personal1@gmail.com",
                             Name = "Personel Name 1",
@@ -156,12 +156,12 @@ namespace NLayer.Repository.Migrations
                             RegistrationNumber = "123",
                             State = true,
                             SurName = "Personal SurName 1",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1878)
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3454)
                         },
                         new
                         {
                             Id = new Guid("81e922c4-4e7f-4925-a9fd-7e9ff3266382"),
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1885),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3459),
                             Description = "Personal 2 Description",
                             Email = "personal2@gmail.com",
                             Name = "Personel Name 2",
@@ -170,12 +170,12 @@ namespace NLayer.Repository.Migrations
                             RegistrationNumber = "124",
                             State = true,
                             SurName = "Personal SurName 2",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1886)
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3460)
                         },
                         new
                         {
                             Id = new Guid("11181a4e-ab99-42c5-805a-346e4c5f02bd"),
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1894),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3465),
                             Description = "Personal 3 Description",
                             Email = "personal3@gmail.com",
                             Name = "Personel Name 3",
@@ -184,12 +184,12 @@ namespace NLayer.Repository.Migrations
                             RegistrationNumber = "125",
                             State = true,
                             SurName = "Personal SurName 3",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1895)
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3465)
                         },
                         new
                         {
                             Id = new Guid("9fb768ef-4f17-471d-b2e8-626b1bc48e02"),
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1900),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3469),
                             Description = "Personal 4 Description",
                             Email = "personal4@gmail.com",
                             Name = "Personel Name 4",
@@ -198,12 +198,12 @@ namespace NLayer.Repository.Migrations
                             RegistrationNumber = "126",
                             State = true,
                             SurName = "Personal SurName 4",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1901)
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3470)
                         },
                         new
                         {
                             Id = new Guid("f7f14713-d762-4714-bbc9-5111e5294494"),
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1906),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3474),
                             Description = "Personal 5 Description",
                             Email = "personal5@gmail.com",
                             Name = "Personel Name 5",
@@ -212,12 +212,12 @@ namespace NLayer.Repository.Migrations
                             RegistrationNumber = "127",
                             State = true,
                             SurName = "Personal SurName 5",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1907)
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3474)
                         },
                         new
                         {
                             Id = new Guid("a2e31a5d-6069-4ec8-8ce2-c65cc96d43fc"),
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1913),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3479),
                             Description = "Personal 6 Description",
                             Email = "personal6@gmail.com",
                             Name = "Personel Name 6",
@@ -226,7 +226,7 @@ namespace NLayer.Repository.Migrations
                             RegistrationNumber = "128",
                             State = true,
                             SurName = "Personal SurName 6",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(1914)
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3479)
                         });
                 });
 
@@ -319,42 +319,42 @@ namespace NLayer.Repository.Migrations
                         {
                             Id = new Guid("4c547e3f-1893-45ea-abe1-329379ebdaa5"),
                             ApprovalStatusId = 1,
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(2248),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3684),
                             CreatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001"),
                             Description = "Proje A Description",
                             Name = "Proje A",
                             Purpose = "Proje A Purpose",
                             State = true,
                             Unit = "Proje A Unit",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(2253),
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3687),
                             UpdatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001")
                         },
                         new
                         {
                             Id = new Guid("e9567f76-4ed8-48b7-b30d-ebafaa8b909e"),
                             ApprovalStatusId = 1,
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(2262),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3762),
                             CreatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001"),
                             Description = "Proje B Description",
                             Name = "Proje B",
                             Purpose = "Proje B Purpose",
                             State = true,
                             Unit = "Proje B Unit",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(2265),
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3765),
                             UpdatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001")
                         },
                         new
                         {
                             Id = new Guid("841eccf0-b978-442c-a5cb-d0808bc7439b"),
                             ApprovalStatusId = 1,
-                            CreatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(2272),
+                            CreatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3770),
                             CreatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001"),
                             Description = "Proje C Description",
                             Name = "Proje C",
                             Purpose = "Proje C Purpose",
                             State = true,
                             Unit = "Proje C Unit",
-                            UpdatedDate = new DateTime(2023, 4, 27, 1, 11, 52, 27, DateTimeKind.Local).AddTicks(2275),
+                            UpdatedDate = new DateTime(2023, 5, 1, 19, 50, 54, 954, DateTimeKind.Local).AddTicks(3771),
                             UpdatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001")
                         });
                 });

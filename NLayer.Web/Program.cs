@@ -8,10 +8,13 @@ using NLayer.Web.Modules;
 using NLayer.Web.Services;
 using System.Reflection;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<>()); ;
+//builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<>()); 
+// REGISTER SERVICES HERE
+
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
@@ -40,6 +43,10 @@ builder.Services.AddScoped(typeof(NotFoundFilter<>));
 builder.Host.UseServiceProviderFactory
     (new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
+
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+builder.Services.AddMvc();
 var app = builder.Build();
 
 app.UseExceptionHandler("/Home/Error");
@@ -58,7 +65,10 @@ app.UseRouting();
 
 
 
+// REGISTER MIDDLEWARE HERE
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",

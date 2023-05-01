@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model List<ProjectDto>
+
+<div class="portlet box blue-chambray">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>Projeler
+        </div>
+    </div>
+    <div class="portlet-body flip-scroll">
+        <table class="table table-bordered table-striped table-condensed flip-content">
+            <thead class="flip-content">
+                <tr>
+                    <th></th>
+                    <th> Proje Adı</th>
+                    <th> Amacı </th>
+                    <th> Birim </th>
+                    <th> Durumu </th>
+                    <th> Açıklama </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="btn btn-sm btn-icon-only btn-success" asp-controller="Projects" asp-action="Update" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-sm btn-icon-only btn-danger" asp-controller="Projects" asp-action="Remove" asp-route-id="@item.Id"><i class="fa fa-times"></i></a>
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Purpose</td>
+                        <td>@item.Unit</td>
+                        <td>@item.Description</td>
+                        <td>@item.ApprovalStatusAck</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+     

@@ -7,5 +7,6 @@ namespace NLayer.Core.Repositories
     {
         Task<List<Project>> GetProjectByIdWithDetailsAsync(int ProjectId);
 
+        Task<List<ApprovalStatus>> GetAllApprovalStatusAsync();
     }
 }

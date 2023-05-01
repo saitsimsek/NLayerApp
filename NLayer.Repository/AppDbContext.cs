@@ -21,6 +21,8 @@ namespace NLayer.Repository
         public DbSet<ProjectDetail> ProjectDetails { get; set; }
         //public DbSet<PersonalTitle> PersonalTitles { get; set; }
 
+        public DbSet<ApprovalStatus> ApprovalStatuses { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

@@ -2,10 +2,10 @@
     ViewData["Title"] = "Index";
 }
 @model List<PersonalDto>
-<div class="portlet box green">
+<div class="portlet box blue-chambray">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-cogs"></i>Responsive Flip Scroll Tables
+            <i class="fa fa-cogs"></i>Personeller
         </div>
         <div class="tools">
             <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
@@ -18,7 +18,7 @@
         <table class="table table-bordered table-striped table-condensed flip-content">
             <thead class="flip-content">
                 <tr>
-                    <th width="20%"> Code </th>
+                    <th></th>
                     <th> Kayıt Numarası </th>
                     <th> Adı</th>
                     <th> Soyadı </th>
@@ -26,13 +26,18 @@
                     <th> Telefon Numarası </th>
                     <th> Pozisyonu </th>
                     <th> Açıklama </th>
-                    <th> Ünvanı </th>                    
+                    <th> Ünvanı </th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    @foreach (var item in Model)
-                    {
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="btn btn-warning" asp-controller="Personals" asp-action="Update" asp-route-id="@item.Id">Güncelle</a>
+                            <a class="btn btn-danger" asp-controller="Personals" asp-action="Remove" asp-route-id="@item.Id">Sil</a>
+                        </td>
                         <td>@item.RegistrationNumber</td>
                         <td>@item.Name</td>
                         <td>@item.SurName</td>
@@ -41,14 +46,10 @@
                         <td>@item.Position</td>
                         <td>@item.Description</td>
                         <td>@item.Title</td>
-                        <td>
-                            <a class="btn btn-warning" asp-controller="Personals" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                            <a class="btn btn-danger" asp-controller="Personals" asp-action="Remove" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    }
-                </tr>
+                    </tr>
+                }
+
             </tbody>
         </table>
     </div>
 </div>
-</table>

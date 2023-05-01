@@ -13,6 +13,9 @@ namespace NLayer.Service.Mapping
 
             CreateMap<Project, ProjectDto>().ReverseMap();
             CreateMap<Project, ProjectWithDetailDto>();
+            CreateMap<ApprovalStatus, Enum>().ReverseMap();
+
+
         }
     }
 }

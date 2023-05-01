@@ -21,7 +21,8 @@ namespace NLayer.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _personalApiService.GetPersonalsWithProjectsAsync());
+
+            return View(await _personalApiService.GetAllAsync());
         }
 
         public async Task<IActionResult> Save()

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using NLayer.API.Filters;
 using NLayer.Core.DTOs;
 using NLayer.Core.Models;
 using NLayer.Core.Services;
@@ -29,7 +28,7 @@ namespace NLayer.API.Controllers
 
         //Get /api/Personals
         [HttpGet]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> GetAll()
         {
             var Personals = await _service.GetAllAsync();
             var PersonalsDtos = _mapper.Map<List<PersonalDto>>(Personals.ToList());
@@ -40,7 +39,7 @@ namespace NLayer.API.Controllers
         //Get /api/Personals/5
         //[ServiceFilter(typeof(NotFoundFilter<Personal>))]
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetByID(int id)
+        public async Task<IActionResult> GetByID(Guid id)
         {
             var personal = await _service.GetByIdAsync(id);
             var personalsDto = _mapper.Map<PersonalDto>(personal);
@@ -63,7 +62,7 @@ namespace NLayer.API.Controllers
         //}
         //Delete /api/Personals/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Remove(int id)
+        public async Task<IActionResult> Remove(Guid id)
         {
             var Personal = await _service.GetByIdAsync(id);
             await _service.RemoveAsync(Personal);

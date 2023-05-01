@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using NLayer.Core.DTOs;
-using NLayer.Core.DTOs_Temp;
 using NLayer.Core.Models;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
@@ -18,12 +17,25 @@ namespace NLayer.Service.Services
             _projectRepository = ProjectRepository;
         }
 
-        
+
         public async Task<CustomResponseDto<List<ProjectWithDetailDto>>> GetProjectByIdWithDetailsAsync(int ProjectId)
         {
             var project = await _projectRepository.GetProjectByIdWithDetailsAsync(ProjectId);
             var projectDto = _mapper.Map<List<ProjectWithDetailDto>>(project);
             return CustomResponseDto<List<ProjectWithDetailDto>>.Success(200, projectDto);
+        }
+
+        public async Task<CustomResponseDto<List<EnumDto>>> GetAllApprovalStatusAsync()
+        {
+            var enumData = await _projectRepository.GetAllApprovalStatusAsync();
+            List<EnumDto> enumDto = enumData.Select(s=> new EnumDto
+            {
+                Id = s.Id,
+                Name = s.Name,  
+                Description= s.Description,
+                State= s.State
+            }).ToList();
+            return CustomResponseDto<List<EnumDto>>.Success(200, enumDto);
         }
     }
 }
