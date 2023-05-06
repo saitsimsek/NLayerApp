@@ -38,6 +38,20 @@ namespace NLayer.Core.Models
         [NotMapped]
         public ICollection<ProjectPersonal> ProjectPersonalsUpdated { get; set; }
 
+        [NotMapped]
+        public ICollection<ProjectIncomeExpense> ProjectIncomeExpenseCreated { get; set; }
+        [NotMapped]
+        public ICollection<ProjectIncomeExpense> ProjectIncomeExpenseUpdated { get; set; }
+
+        [NotMapped]
+        public ICollection<ProjectOutput> ProjectOutputCreated { get; set; }
+        [NotMapped]
+        public ICollection<ProjectOutput> ProjectOutputUpdated { get; set; }
+
+        [NotMapped]
+        public ICollection<ProjectStage> ProjectStageCreated { get; set; }
+        [NotMapped]
+        public ICollection<ProjectStage> ProjectStageUpdated { get; set; }
 
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NLayer.Core.Models
 {
-    public class PRM_Stakeholder
+    public class PRM_ProjectType
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Save";
+}
+@model ProjectDto
+
+
+<form asp-action="SaveProjectEdit" method="POST" asp-controller="Projects">
+
+    <div class="form-group row">
+        <label asp-for="Name" class="control-label col-md-2 text-right"></label>
+        <div class="col-md-3">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Purpose" class="control-label col-md-2 text-right"></label>
+        <div class="col-md-3">
+            <input asp-for="Purpose" class="form-control" />
+            <span asp-validation-for="Purpose" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Unit" class="control-label col-md-2 text-right"></label>
+        <div class="col-md-3">
+            <input asp-for="Unit" class="form-control" />
+            <span asp-validation-for="Unit" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Description" class="control-label col-md-2 text-right"></label>
+        <div class="col-md-3">
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="ApprovalStatusId" class="control-label col-md-2 text-right"></label>
+        <div class="col-md-3">
+            <select asp-for="ApprovalStatusId" asp-items="ViewBag.ApprovalStatus" class="form-control">
+                <option disabled selected>Seçiniz</option>
+            </select>
+            <span asp-validation-for="ApprovalStatusId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    <a href="javascript:;" class="btn default button-previous disabled" style="display: none;">
+                        <i class="fa fa-angle-left"></i> Back
+                    </a>
+                    <input type="submit" class="btn btn-outline green button-next" value="Kaydet"/> 
+                    @*   <a href="javascript:;" class="btn green button-submit" style="display: none;">
+                    Submit
+                    <i class="fa fa-check"></i>
+                    </a>
+                    *@
+                    @*<input type="submit" value="Save" class="btn-primary" />*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@*<script src="~/assets/global/plugins/jquery.min.js" type="text/javascript"></script>*@
+@*<script>
+    $(document).ready(function () {
+        $("#projectSave").click(function () {
+            alert("The paragraph was clicked.");
+        });
+
+    });*@
+
+</script>

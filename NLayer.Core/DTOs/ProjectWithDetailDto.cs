@@ -1,8 +1,16 @@
 ﻿namespace NLayer.Core.DTOs
 {
-    public class ProjectWithDetailDto : ProjectDto
+    public class ProjectWithDetailDto 
     {
-        public List<ProjectDetailDto> Details { get; set; }
+        public ProjectWithDetailDto()
+        {
+            Project = new ProjectDto();
+            Details = new ProjectDetailDto();
+        }
+
+        public ProjectDto Project { get; set; }
+
+        public ProjectDetailDto Details { get; set; }
     }
 
 }

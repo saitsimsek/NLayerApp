@@ -4,6 +4,7 @@ using NLayer.API.Filters;
 using NLayer.Core.DTOs;
 using NLayer.Core.Models;
 using NLayer.Core.Services;
+using System.Xml.Linq;
 
 namespace NLayer.API.Controllers
 {
@@ -25,17 +26,18 @@ namespace NLayer.API.Controllers
         {
 
             var projects = await _service.GetAllAsync();
-            List<ProjectDto> projectDtos = projects.Select(s => new ProjectDto {
+            List<ProjectDto> projectDtos = projects.Select(s => new ProjectDto
+            {
                 Id = s.Id,
-                Name =s.Name,
+                Name = s.Name,
                 Purpose = s.Purpose,
-                Unit =s.Unit,
-                Description =s.Description,
-                ApprovalStatusId =s.ApprovalStatusId
+                Unit = s.Unit,
+                Description = s.Description,
+                ApprovalStatusId = s.ApprovalStatusId
             }).ToList();
 
- 
-           // var ProjectDtos = _mapper.Map<List<ProjectDto>>(Projects.ToList());
+
+            // var ProjectDtos = _mapper.Map<List<ProjectDto>>(Projects.ToList());
             return CreateActionResult(CustomResponseDto<List<ProjectDto>>.Success(200, projectDtos));
         }
 
@@ -52,9 +54,23 @@ namespace NLayer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(ProjectDto ProjectDto)
         {
-            var Project = await _service.AddAsync(_mapper.Map<Project>(ProjectDto));
-            var ProjectsDto = _mapper.Map<ProjectDto>(Project);
-            return CreateActionResult(CustomResponseDto<ProjectDto>.Success(201, ProjectsDto));
+            Project project = new Project
+            {
+                Id = Guid.NewGuid(),
+                Name = ProjectDto.Name,
+                Purpose = ProjectDto.Purpose,
+                Unit = ProjectDto.Unit,
+                Description = ProjectDto.Description,
+                ApprovalStatusId = ProjectDto.ApprovalStatusId.Value,
+                CreatedPersonalId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                CreatedDate = DateTime.Now,
+                UpdatedPersonalId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                UpdatedDate =DateTime.Now,
+                State =true
+            };
+            await _service.AddAsync(project);
+            ProjectDto.Id = project.Id;
+            return CreateActionResult(CustomResponseDto<ProjectDto>.Success(201, ProjectDto));
         }
 
         [HttpPut]
@@ -85,7 +101,7 @@ namespace NLayer.API.Controllers
         {
             return CreateActionResult(await _service.GetAllApprovalStatusAsync());
         }
-        
+
 
 
     }

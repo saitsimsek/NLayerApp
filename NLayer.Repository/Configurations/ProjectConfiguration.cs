@@ -22,12 +22,17 @@ namespace NLayer.Repository.Configurations
             builder.Property(x => x.Unit).HasMaxLength(100);
             builder.Property(x => x.Description).HasMaxLength(500);
             builder.Property(x => x.ApprovalStatusId).IsRequired();
+            builder.Property(x => x.PRM_ProjectTypeId).IsRequired();
+            builder.Property(x => x.StrategicPlanCode).IsRequired();
+            builder.Property(x => x.PlanState).IsRequired();
+            builder.Property(x => x.StartDate).IsRequired();
+            builder.Property(x => x.EndDate).IsRequired();
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.CreatedPersonalId).IsRequired();
             builder.Property(x => x.UpdatedDate).IsRequired();
             builder.Property(x => x.UpdatedPersonalId).IsRequired();
             builder.Property(x => x.State).IsRequired();
-
+         
             builder.ToTable("Projects");
 
             builder.HasOne(x => x.CreatedPersonal).WithMany(x => x.ProjectsCreated).HasForeignKey(x => x.CreatedPersonalId).OnDelete(DeleteBehavior.ClientSetNull);
