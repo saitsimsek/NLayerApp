@@ -26,29 +26,23 @@ namespace NLayer.Web.Controllers
         public async Task<IActionResult> Save()
         {
             var approvalStatus = await _projectApiService.GetAllApprovalStatusAsync();
-            ViewBag.ApprovalStatus = new SelectList(approvalStatus, "Id", "Name");      
-            return View(new ProjectWithDetailDto());
-        }
-
-
-        public async Task<IActionResult> SaveProjectEdit()
-        {
-            var approvalStatus = await _projectApiService.GetAllApprovalStatusAsync();
             ViewBag.ApprovalStatus = new SelectList(approvalStatus, "Id", "Name");
+            ViewBag.ProjectType = new SelectList(approvalStatus, "Id", "Name");      
             return View(new ProjectWithDetailDto());
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveProjectEdit(ProjectDto projectDto)
+        public async Task<IActionResult> Save(ProjectWithDetailDto projectWithDetailDto)
         {
             if (ModelState.IsValid)
             {
-                await _projectApiService.SaveAsync(projectDto);
+                await _projectApiService.SaveAsync(projectWithDetailDto);
                 return RedirectToAction(nameof(Index));
             }
             var approvalStatus = await _projectApiService.GetAllApprovalStatusAsync();
             ViewBag.ApprovalStatus = new SelectList(approvalStatus, "Id", "Name");
-            return View("Save",new ProjectWithDetailDto());
+            ViewBag.ProjectType = new SelectList(approvalStatus, "Id", "Name");
+            return View(projectWithDetailDto);
         }
 
         public async Task<IActionResult> SaveProjectDetailEdit()
@@ -58,11 +52,11 @@ namespace NLayer.Web.Controllers
             return View(new ProjectWithDetailDto());
         }
         [HttpPost]
-        public async Task<IActionResult> SaveProjectDetailEdit(ProjectDto projectDto)
+        public async Task<IActionResult> SaveProjectDetailEdit(ProjectWithDetailDto projectWithDetailDto)
         {
             if (ModelState.IsValid)
             {
-                await _projectApiService.SaveAsync(projectDto);
+                await _projectApiService.SaveAsync(projectWithDetailDto);
                 return RedirectToAction(nameof(Index));
             }
             var approvalStatus = await _projectApiService.GetAllApprovalStatusAsync();

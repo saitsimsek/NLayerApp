@@ -23,11 +23,11 @@ namespace NLayer.Web.Services
             return response.Data;
         }
 
-        public async Task<ProjectDto> SaveAsync(ProjectDto newProject)
+        public async Task<ProjectWithDetailDto> SaveAsync(ProjectWithDetailDto newProject)
         {
             var response = await _httpClient.PostAsJsonAsync("projects", newProject);
             if (!response.IsSuccessStatusCode) return null;
-            var responseBody = await response.Content.ReadFromJsonAsync<CustomResponseDto<ProjectDto>>();
+            var responseBody = await response.Content.ReadFromJsonAsync<CustomResponseDto<ProjectWithDetailDto>>();
             return responseBody.Data;
         }
         public async Task<bool> UpdateAsync(ProjectDto newProject)

@@ -33,6 +33,8 @@ namespace NLayer.API.Controllers
                 Purpose = s.Purpose,
                 Unit = s.Unit,
                 Description = s.Description,
+                StartDate = s.StartDate,
+                EndDate = s.EndDate,
                 ApprovalStatusId = s.ApprovalStatusId
             }).ToList();
 
