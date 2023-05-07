@@ -52,6 +52,22 @@
                             </div>
 
                             <div class="form-group row">
+                                <label asp-for="Project.StartDate" class="control-label col-md-2 text-right"></label>
+                                <div class="col-md-3">
+                                    <input asp-for="Project.StartDate" class="form-control" />
+                                    <span asp-validation-for="Project.StartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="Project.EndDate" class="control-label col-md-2 text-right"></label>
+                                <div class="col-md-3">
+                                    <input asp-for="Project.EndDate" class="form-control" />
+                                    <span asp-validation-for="Project.EndDate" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label asp-for="Project.ApprovalStatusId" class="control-label col-md-2 text-right"></label>
                                 <div class="col-md-3">
                                     <select asp-for="Project.ApprovalStatusId" asp-items="ViewBag.ApprovalStatus" class="form-control">
