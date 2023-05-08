@@ -25,6 +25,13 @@ namespace NLayer.Service.Services
             return CustomResponseDto<List<ProjectWithDetailDto>>.Success(200, projectDto);
         }
 
+        public async Task<CustomResponseDto<List<ProjectWithDetailDto>>> GetProjectByIdWithPersonalsAsync(int ProjectId)
+        {
+            var project = await _projectRepository.GetProjectByIdWithDetailsAsync(ProjectId);
+            var projectDto = _mapper.Map<List<ProjectWithDetailDto>>(project);
+            return CustomResponseDto<List<ProjectWithDetailDto>>.Success(200, projectDto);
+        }
+
         public async Task<CustomResponseDto<List<EnumDto>>> GetAllApprovalStatusAsync()
         {
             var enumData = await _projectRepository.GetAllApprovalStatusAsync();

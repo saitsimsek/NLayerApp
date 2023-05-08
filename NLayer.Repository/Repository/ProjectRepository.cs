@@ -12,7 +12,12 @@ namespace NLayer.Repository.Repository
 
         public async Task<List<Project>> GetProjectByIdWithDetailsAsync(int ProjectId)
         {
-            return await _context.Projects.Include(i => i.ProjectDetails).ToListAsync();
+            return await _context.Projects.Include(i => i.ProjectDetails).Include(i => i.ProjectDuration).Include(i => i.ProjectIncomeExpenses).Include(i => i.ProjectStages).ToListAsync();
+        }
+
+        public async Task<List<Project>> GetProjectByIdWithPersonalsAsync(int ProjectId)
+        {
+            return await _context.Projects.Include(i => i.ProjectPersonals).Include(i => i.ProjectStages).ToListAsync();
         }
 
         public async Task<List<ApprovalStatus>> GetAllApprovalStatusAsync()

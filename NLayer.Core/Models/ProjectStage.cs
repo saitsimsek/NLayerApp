@@ -12,7 +12,7 @@ namespace NLayer.Core.Models
         public Project Project { get; set; }
         public decimal Name { get; set; }
         public string Description { get; set; }
-        public bool Percentage { get; set; } // Yüzde
+        public int Percentage { get; set; } // Yüzde
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string ProjectDuration { get; set; }
