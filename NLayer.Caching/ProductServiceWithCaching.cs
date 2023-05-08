@@ -1,17 +1,14 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using NLayer.Core.DTOs;
 using NLayer.Core.Models;
-using NLayer.Core.Repositories;
-using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
 using NLayer.Service.Exceptions;
 using System.Linq.Expressions;
 
 namespace NLayer.Caching
 {
-public class ProductServiceWithCaching : IProductService
+    public class ProductServiceWithCaching : IProductService
     {
         private const string CacheProductKey = "productsCache";
         private readonly IMapper _mapper;
@@ -77,9 +74,7 @@ public class ProductServiceWithCaching : IProductService
         public Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsWithCategory()
         {
             var products = _memoryCache.Get<IEnumerable<Product>>(CacheProductKey);
-
             var productsWithCategoryDto = _mapper.Map<List<ProductWithCategoryDto>>(products);
-
             return Task.FromResult(CustomResponseDto<List<ProductWithCategoryDto>>.Success(200,productsWithCategoryDto));
         }
 

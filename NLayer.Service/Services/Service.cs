@@ -47,14 +47,14 @@ namespace NLayer.Service.Services
             return await _repository.GetAll().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
-           var hasProduct = await _repository.GetByIdAsync(id);
-            if (hasProduct==null)
+           var hasPersonal = await _repository.GetByIdAsync(id);
+            if (hasPersonal==null)
             {
                 throw new ClientSideException($"{typeof(T).Name}({id}) not found");
             }
-            return hasProduct;
+            return hasPersonal;
         }
 
         public async Task RemoveAsync(T entity)

@@ -22,7 +22,7 @@ namespace NLayer.Repository.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("NLayer.Core.Category", b =>
+            modelBuilder.Entity("NLayer.Core.Models.ApprovalStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,133 +30,240 @@ namespace NLayer.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("ApprovalStatuses");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Kalemler",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Description = "Projet Approval Description",
+                            Name = "Projet Approval 1",
+                            State = true
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Kitaplar",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Description = "Projet Approval Description",
+                            Name = "Projet Approval 2",
+                            State = true
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Defterler",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
-                });
-
-            modelBuilder.Entity("NLayer.Core.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Stock")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 9, 7, 20, 26, 6, 18, DateTimeKind.Local).AddTicks(9183),
-                            Name = "Kalem 1",
-                            Price = 100m,
-                            Stock = 20,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 9, 7, 20, 26, 6, 18, DateTimeKind.Local).AddTicks(9194),
-                            Name = "Kalem 2",
-                            Price = 200m,
-                            Stock = 30,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 9, 7, 20, 26, 6, 18, DateTimeKind.Local).AddTicks(9195),
-                            Name = "Kalem 3",
-                            Price = 600m,
-                            Stock = 60,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Description = "Projet Approval Description",
+                            Name = "Projet Approval 3",
+                            State = true
                         },
                         new
                         {
                             Id = 4,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 9, 7, 20, 26, 6, 18, DateTimeKind.Local).AddTicks(9196),
-                            Name = "Kitap 1",
-                            Price = 600m,
-                            Stock = 60,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Description = "Projet Approval Description",
+                            Name = "Projet Approval 4",
+                            State = true
                         },
                         new
                         {
                             Id = 5,
-                            CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 9, 7, 20, 26, 6, 18, DateTimeKind.Local).AddTicks(9197),
-                            Name = "Kitap 2",
-                            Price = 6600m,
-                            Stock = 320,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Description = "Projet Approval Description",
+                            Name = "Projet Approval 5",
+                            State = true
                         });
                 });
 
-            modelBuilder.Entity("NLayer.Core.ProductFeature", b =>
+            modelBuilder.Entity("NLayer.Core.Models.Personal", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Position")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("RegistrationNumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SurName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Personals", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000000001"),
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1435),
+                            Description = "Admin Description",
+                            Email = "admin@gmail.com",
+                            Name = "Admin Name 1",
+                            PhoneNumber = "(505)0000000",
+                            Position = "Sistem Yöneticisi",
+                            RegistrationNumber = "000",
+                            State = true,
+                            SurName = "Admin SurName 1",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1447)
+                        },
+                        new
+                        {
+                            Id = new Guid("2f09bf40-1528-4980-900f-716914abfbf2"),
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1463),
+                            Description = "Personal 1 Description",
+                            Email = "personal1@gmail.com",
+                            Name = "Personel Name 1",
+                            PhoneNumber = "(505)5050001",
+                            Position = "Müdür",
+                            RegistrationNumber = "123",
+                            State = true,
+                            SurName = "Personal SurName 1",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1464)
+                        },
+                        new
+                        {
+                            Id = new Guid("81e922c4-4e7f-4925-a9fd-7e9ff3266382"),
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1468),
+                            Description = "Personal 2 Description",
+                            Email = "personal2@gmail.com",
+                            Name = "Personel Name 2",
+                            PhoneNumber = "(505)5050002",
+                            Position = "Müdür Yardımcısı",
+                            RegistrationNumber = "124",
+                            State = true,
+                            SurName = "Personal SurName 2",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1469)
+                        },
+                        new
+                        {
+                            Id = new Guid("11181a4e-ab99-42c5-805a-346e4c5f02bd"),
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1472),
+                            Description = "Personal 3 Description",
+                            Email = "personal3@gmail.com",
+                            Name = "Personel Name 3",
+                            PhoneNumber = "(505)5050003",
+                            Position = "Mühendis",
+                            RegistrationNumber = "125",
+                            State = true,
+                            SurName = "Personal SurName 3",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1473)
+                        },
+                        new
+                        {
+                            Id = new Guid("9fb768ef-4f17-471d-b2e8-626b1bc48e02"),
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1477),
+                            Description = "Personal 4 Description",
+                            Email = "personal4@gmail.com",
+                            Name = "Personel Name 4",
+                            PhoneNumber = "(505)5050004",
+                            Position = "Mühendis",
+                            RegistrationNumber = "126",
+                            State = true,
+                            SurName = "Personal SurName 4",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1478)
+                        },
+                        new
+                        {
+                            Id = new Guid("f7f14713-d762-4714-bbc9-5111e5294494"),
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1480),
+                            Description = "Personal 5 Description",
+                            Email = "personal5@gmail.com",
+                            Name = "Personel Name 5",
+                            PhoneNumber = "(505)5050005",
+                            Position = "Mühendis",
+                            RegistrationNumber = "127",
+                            State = true,
+                            SurName = "Personal SurName 5",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1481)
+                        },
+                        new
+                        {
+                            Id = new Guid("a2e31a5d-6069-4ec8-8ce2-c65cc96d43fc"),
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1484),
+                            Description = "Personal 6 Description",
+                            Email = "personal6@gmail.com",
+                            Name = "Personel Name 6",
+                            PhoneNumber = "(505)5050006",
+                            Position = "Mühendis",
+                            RegistrationNumber = "128",
+                            State = true,
+                            SurName = "Personal SurName 6",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(1485)
+                        });
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.PersonalTitle", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UpdatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedPersonalId");
+
+                    b.HasIndex("UpdatedPersonalId");
+
+                    b.ToTable("PersonalTitles", (string)null);
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.PRM_Document", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -164,76 +271,976 @@ namespace NLayer.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Color")
-                        .IsRequired()
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Height")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Width")
-                        .HasColumnType("int");
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
-
-                    b.ToTable("ProductFeatures");
+                    b.ToTable("PRM_Document");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Color = "Kırmızı",
-                            Height = 100,
-                            ProductId = 1,
-                            Width = 200
+                            Description = "Projet Document Description",
+                            Name = "Projet Document 1",
+                            State = true
                         },
                         new
                         {
                             Id = 2,
-                            Color = "Mavi",
-                            Height = 300,
-                            ProductId = 2,
-                            Width = 500
+                            Description = "Projet Document Description",
+                            Name = "Projet Document 2",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Projet Document Description",
+                            Name = "Projet Document 3",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Projet Document Description",
+                            Name = "Projet Document 4",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Projet Document Description",
+                            Name = "Projet Document 5",
+                            State = true
                         });
                 });
 
-            modelBuilder.Entity("NLayer.Core.Product", b =>
+            modelBuilder.Entity("NLayer.Core.Models.PRM_Liable", b =>
                 {
-                    b.HasOne("NLayer.Core.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PRM_Liable");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Projet Liable Description",
+                            Name = "Projet Liable 1",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Projet Liable Description",
+                            Name = "Projet Liable 2",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Projet Liable Description",
+                            Name = "Projet Liable 3",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Projet Liable Description",
+                            Name = "Projet Liable 4",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Projet Liable Description",
+                            Name = "Projet Liable 5",
+                            State = true
+                        });
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.PRM_Output", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PRM_Output");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Projet Output Description",
+                            Name = "Projet Output 1",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Projet Output Description",
+                            Name = "Projet Output 2",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Projet Output Description",
+                            Name = "Projet Output 3",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Projet Output Description",
+                            Name = "Projet Output 4",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Projet Output Description",
+                            Name = "Projet Output 5",
+                            State = true
+                        });
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.PRM_ProjectType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PRM_ProjectType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Projet ProjectType Description",
+                            Name = "Projet ProjectType 1",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Projet ProjectType Description",
+                            Name = "Projet ProjectType 2",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Projet ProjectType Description",
+                            Name = "Projet ProjectType 3",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Projet ProjectType Description",
+                            Name = "Projet ProjectType 4",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Projet ProjectType Description",
+                            Name = "Projet ProjectType 5",
+                            State = true
+                        });
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.PRM_Stakeholder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PRM_Stakeholder");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Projet Stakeholder Description",
+                            Name = "Projet Stakeholder 1",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Projet Stakeholder Description",
+                            Name = "Projet Stakeholder 2",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Projet Stakeholder Description",
+                            Name = "Projet Stakeholder 3",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Projet Stakeholder Description",
+                            Name = "Projet Stakeholder 4",
+                            State = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Projet Stakeholder Description",
+                            Name = "Projet Stakeholder 5",
+                            State = true
+                        });
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.Project", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ApprovalStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("PRM_ProjectTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlanState")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProjectDuration")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Purpose")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("StrategicPlanCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Unit")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UpdatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApprovalStatusId");
+
+                    b.HasIndex("CreatedPersonalId");
+
+                    b.HasIndex("PRM_ProjectTypeId");
+
+                    b.HasIndex("UpdatedPersonalId");
+
+                    b.ToTable("Projects", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("4c547e3f-1893-45ea-abe1-329379ebdaa5"),
+                            ApprovalStatusId = 1,
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3578),
+                            CreatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001"),
+                            Description = "Proje A Description",
+                            EndDate = new DateTime(2024, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3572),
+                            Name = "Proje A",
+                            PRM_ProjectTypeId = 1,
+                            PlanState = 0,
+                            Purpose = "Proje A Purpose",
+                            StartDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3568),
+                            State = true,
+                            StrategicPlanCode = 12345,
+                            Unit = "Proje A Unit",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3580),
+                            UpdatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001")
+                        },
+                        new
+                        {
+                            Id = new Guid("e9567f76-4ed8-48b7-b30d-ebafaa8b909e"),
+                            ApprovalStatusId = 1,
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3590),
+                            CreatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001"),
+                            Description = "Proje B Description",
+                            EndDate = new DateTime(2024, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3588),
+                            Name = "Proje B",
+                            PRM_ProjectTypeId = 1,
+                            PlanState = 0,
+                            Purpose = "Proje B Purpose",
+                            StartDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3587),
+                            State = true,
+                            StrategicPlanCode = 12345,
+                            Unit = "Proje B Unit",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3591),
+                            UpdatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001")
+                        },
+                        new
+                        {
+                            Id = new Guid("841eccf0-b978-442c-a5cb-d0808bc7439b"),
+                            ApprovalStatusId = 1,
+                            CreatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3595),
+                            CreatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001"),
+                            Description = "Proje C Description",
+                            EndDate = new DateTime(2024, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3595),
+                            Name = "Proje C",
+                            PRM_ProjectTypeId = 1,
+                            PlanState = 0,
+                            Purpose = "Proje C Purpose",
+                            StartDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3594),
+                            State = true,
+                            StrategicPlanCode = 12345,
+                            Unit = "Proje C Unit",
+                            UpdatedDate = new DateTime(2023, 5, 6, 17, 8, 13, 989, DateTimeKind.Local).AddTicks(3596),
+                            UpdatedPersonalId = new Guid("00000000-0000-0000-0000-000000000001")
+                        });
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectDetail", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AvailableTRL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AvailableTRLDocumentation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("GoalTRL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImportantConsiderations")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("RiskPlan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SubTechnologyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UpdatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedPersonalId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("UpdatedPersonalId");
+
+                    b.ToTable("ProjectDetails", (string)null);
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectIncomeExpense", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Abroad")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Name")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Outsource")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ProspectiveCustomer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("Time")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UpdatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedPersonalId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("UpdatedPersonalId");
+
+                    b.ToTable("ProjectIncomeExpenses", (string)null);
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectOutput", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("PRM_DocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PRM_LiableId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PRM_OutputId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Product")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UpdatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedPersonalId");
+
+                    b.HasIndex("PRM_DocumentId");
+
+                    b.HasIndex("PRM_LiableId");
+
+                    b.HasIndex("PRM_OutputId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("UpdatedPersonalId");
+
+                    b.ToTable("ProjectOutputs", (string)null);
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectPersonal", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PersonalTitleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UpdatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedPersonalId");
+
+                    b.HasIndex("PersonalId");
+
+                    b.HasIndex("PersonalTitleId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("UpdatedPersonalId");
+
+                    b.ToTable("ProjectPersonals", (string)null);
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectStage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Name")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("PRM_LiableId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PRM_StakeholderId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Percentage")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ProjectDuration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UpdatedPersonalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedPersonalId");
+
+                    b.HasIndex("PRM_LiableId");
+
+                    b.HasIndex("PRM_StakeholderId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("UpdatedPersonalId");
+
+                    b.ToTable("ProjectStages", (string)null);
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.PersonalTitle", b =>
+                {
+                    b.HasOne("NLayer.Core.Models.Personal", "CreatedPersonal")
+                        .WithMany("PersonalTitlesCreated")
+                        .HasForeignKey("CreatedPersonalId")
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Personal", "UpdatedPersonal")
+                        .WithMany("PersonalTitlesUpdated")
+                        .HasForeignKey("UpdatedPersonalId")
+                        .IsRequired();
+
+                    b.Navigation("CreatedPersonal");
+
+                    b.Navigation("UpdatedPersonal");
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.Project", b =>
+                {
+                    b.HasOne("NLayer.Core.Models.ApprovalStatus", "ApprovalStatus")
+                        .WithMany()
+                        .HasForeignKey("ApprovalStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
-                });
+                    b.HasOne("NLayer.Core.Models.Personal", "CreatedPersonal")
+                        .WithMany("ProjectsCreated")
+                        .HasForeignKey("CreatedPersonalId")
+                        .IsRequired();
 
-            modelBuilder.Entity("NLayer.Core.ProductFeature", b =>
-                {
-                    b.HasOne("NLayer.Core.Product", "Product")
-                        .WithOne("ProductFeature")
-                        .HasForeignKey("NLayer.Core.ProductFeature", "ProductId")
+                    b.HasOne("NLayer.Core.Models.PRM_ProjectType", "PRM_ProjectType")
+                        .WithMany()
+                        .HasForeignKey("PRM_ProjectTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("NLayer.Core.Category", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("NLayer.Core.Product", b =>
-                {
-                    b.Navigation("ProductFeature")
+                    b.HasOne("NLayer.Core.Models.Personal", "UpdatedPersonal")
+                        .WithMany("ProjectsUpdated")
+                        .HasForeignKey("UpdatedPersonalId")
                         .IsRequired();
+
+                    b.Navigation("ApprovalStatus");
+
+                    b.Navigation("CreatedPersonal");
+
+                    b.Navigation("PRM_ProjectType");
+
+                    b.Navigation("UpdatedPersonal");
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectDetail", b =>
+                {
+                    b.HasOne("NLayer.Core.Models.Personal", "CreatedPersonal")
+                        .WithMany("ProjectDetailsCreated")
+                        .HasForeignKey("CreatedPersonalId")
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Project", "Project")
+                        .WithMany("ProjectDetails")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Personal", "UpdatedPersonal")
+                        .WithMany("ProjectDetailsUpdated")
+                        .HasForeignKey("UpdatedPersonalId")
+                        .IsRequired();
+
+                    b.Navigation("CreatedPersonal");
+
+                    b.Navigation("Project");
+
+                    b.Navigation("UpdatedPersonal");
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectIncomeExpense", b =>
+                {
+                    b.HasOne("NLayer.Core.Models.Personal", "CreatedPersonal")
+                        .WithMany("ProjectIncomeExpenseCreated")
+                        .HasForeignKey("CreatedPersonalId")
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Project", "Project")
+                        .WithMany("ProjectIncomeExpenses")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Personal", "UpdatedPersonal")
+                        .WithMany("ProjectIncomeExpenseUpdated")
+                        .HasForeignKey("UpdatedPersonalId")
+                        .IsRequired();
+
+                    b.Navigation("CreatedPersonal");
+
+                    b.Navigation("Project");
+
+                    b.Navigation("UpdatedPersonal");
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectOutput", b =>
+                {
+                    b.HasOne("NLayer.Core.Models.Personal", "CreatedPersonal")
+                        .WithMany("ProjectOutputCreated")
+                        .HasForeignKey("CreatedPersonalId")
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.PRM_Document", "PRM_Document")
+                        .WithMany()
+                        .HasForeignKey("PRM_DocumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.PRM_Liable", "PRM_Liable")
+                        .WithMany()
+                        .HasForeignKey("PRM_LiableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.PRM_Output", "PRM_Output")
+                        .WithMany()
+                        .HasForeignKey("PRM_OutputId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Project", "Project")
+                        .WithMany("ProjectOutputs")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Personal", "UpdatedPersonal")
+                        .WithMany("ProjectOutputUpdated")
+                        .HasForeignKey("UpdatedPersonalId")
+                        .IsRequired();
+
+                    b.Navigation("CreatedPersonal");
+
+                    b.Navigation("PRM_Document");
+
+                    b.Navigation("PRM_Liable");
+
+                    b.Navigation("PRM_Output");
+
+                    b.Navigation("Project");
+
+                    b.Navigation("UpdatedPersonal");
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectPersonal", b =>
+                {
+                    b.HasOne("NLayer.Core.Models.Personal", "CreatedPersonal")
+                        .WithMany("ProjectPersonalsCreated")
+                        .HasForeignKey("CreatedPersonalId")
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Personal", "Personal")
+                        .WithMany()
+                        .HasForeignKey("PersonalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.PersonalTitle", "PersonalTitle")
+                        .WithMany()
+                        .HasForeignKey("PersonalTitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Project", "Project")
+                        .WithMany("ProjectPersonals")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Personal", "UpdatedPersonal")
+                        .WithMany("ProjectPersonalsUpdated")
+                        .HasForeignKey("UpdatedPersonalId")
+                        .IsRequired();
+
+                    b.Navigation("CreatedPersonal");
+
+                    b.Navigation("Personal");
+
+                    b.Navigation("PersonalTitle");
+
+                    b.Navigation("Project");
+
+                    b.Navigation("UpdatedPersonal");
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.ProjectStage", b =>
+                {
+                    b.HasOne("NLayer.Core.Models.Personal", "CreatedPersonal")
+                        .WithMany("ProjectStageCreated")
+                        .HasForeignKey("CreatedPersonalId")
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.PRM_Liable", "PRM_Liable")
+                        .WithMany()
+                        .HasForeignKey("PRM_LiableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.PRM_Stakeholder", "PRM_Stakeholder")
+                        .WithMany()
+                        .HasForeignKey("PRM_StakeholderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Project", "Project")
+                        .WithMany("ProjectStages")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLayer.Core.Models.Personal", "UpdatedPersonal")
+                        .WithMany("ProjectStageUpdated")
+                        .HasForeignKey("UpdatedPersonalId")
+                        .IsRequired();
+
+                    b.Navigation("CreatedPersonal");
+
+                    b.Navigation("PRM_Liable");
+
+                    b.Navigation("PRM_Stakeholder");
+
+                    b.Navigation("Project");
+
+                    b.Navigation("UpdatedPersonal");
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.Personal", b =>
+                {
+                    b.Navigation("PersonalTitlesCreated");
+
+                    b.Navigation("PersonalTitlesUpdated");
+
+                    b.Navigation("ProjectDetailsCreated");
+
+                    b.Navigation("ProjectDetailsUpdated");
+
+                    b.Navigation("ProjectIncomeExpenseCreated");
+
+                    b.Navigation("ProjectIncomeExpenseUpdated");
+
+                    b.Navigation("ProjectOutputCreated");
+
+                    b.Navigation("ProjectOutputUpdated");
+
+                    b.Navigation("ProjectPersonalsCreated");
+
+                    b.Navigation("ProjectPersonalsUpdated");
+
+                    b.Navigation("ProjectStageCreated");
+
+                    b.Navigation("ProjectStageUpdated");
+
+                    b.Navigation("ProjectsCreated");
+
+                    b.Navigation("ProjectsUpdated");
+                });
+
+            modelBuilder.Entity("NLayer.Core.Models.Project", b =>
+                {
+                    b.Navigation("ProjectDetails");
+
+                    b.Navigation("ProjectIncomeExpenses");
+
+                    b.Navigation("ProjectOutputs");
+
+                    b.Navigation("ProjectPersonals");
+
+                    b.Navigation("ProjectStages");
                 });
 #pragma warning restore 612, 618
         }

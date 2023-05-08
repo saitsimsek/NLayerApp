@@ -8,9 +8,16 @@ namespace NLayer.Core.Models
 {
     public abstract class BaseEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+        public Personal CreatedPersonal { get; set; }
+        public Guid CreatedPersonalId { get; set; }
         public DateTime CreatedDate { get; set; }
+        public Personal UpdatedPersonal { get; set; }
+        public Guid UpdatedPersonalId { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public bool State { get; set; }
+
+
 
     }
 }

@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model List<ProjectDto>
+
+<div class="card">
+    <div class="card-header border-0 pt-6">
+        <div class="card-title">
+            <div class="d-flex align-items-center position-relative my-1">
+                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">
+                    Projeler
+                </h1>
+            </div>
+        </div>
+        <div class="card-toolbar">
+            <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+                    <span class="svg-icon svg-icon-2">
+                        <i class="fa-sharp fa-solid fa-plus"></i> Yeni Proje 
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body py-4">
+        <div id="kt_table_users_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="table-responsive">
+                <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer" id="kt_table_users">
+                    <thead>
+                        <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                            <th></th>
+                            <th> Proje Adı</th>
+                            <th> Amacı </th>
+                            <th> Birim </th>
+                            <th> Başlangıç Tarihi </th>
+                            <th> Bitiş Tarihi </th>
+                            <th> Durumu </th>
+                            <th> Açıklama </th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 fw-bold">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a class="btn btn-sm btn-primary me-2" asp-controller="Projects" asp-action="Update" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-danger me-2" asp-controller="Projects" asp-action="Remove" asp-route-id="@item.Id"><i class="fa fa-times"></i></a>
+                                </td>
+                                <td>@item.Name</td>
+                                <td>@item.Purpose</td>
+                                <td>@item.Unit</td>
+                                <td>@item.StartDate</td>
+                                <td>@item.EndDate</td>
+                                <td>@item.ApprovalStatusAck</td>
+                                <td>@item.Description</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

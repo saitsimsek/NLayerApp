@@ -8,12 +8,14 @@ namespace NLayer.Service.Mapping
     {
        public MapProfile()
         {
-            CreateMap<Product, ProductDto>().ReverseMap();
-            CreateMap<Category, CategoryDto>().ReverseMap();
-            CreateMap<ProductFeature, ProductFeatureDto>().ReverseMap();
-            CreateMap<ProductUpdateDto, Product>();
-            CreateMap<Product, ProductWithCategoryDto>();
-            CreateMap<Category, CategoryWithProdutsDto>();
+            CreateMap<Personal, PersonalDto>().ReverseMap();
+            CreateMap<Personal, PersonalWithProjetsDto>();
+
+            CreateMap<Project, ProjectDto>().ReverseMap();
+            CreateMap<Project, ProjectWithDetailDto>();
+            CreateMap<ApprovalStatus, Enum>().ReverseMap();
+
+
         }
     }
 }
