@@ -5,206 +5,266 @@
 
 <form asp-action="Save" method="POST" asp-controller="Projects">
 
-    <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-        <div class="tab-content">
-            <div class="tab-pane fade active show">
-                <div class="d-flex flex-column gap-7 gap-lg-10">
-                    <div class="card card-flush py-4">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <h2>Proje Genel Bilgileri</h2>
-                            </div>
-                        </div>
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.Name" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Project.Name" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.Name" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div> 
 
+    <div class="row gy-5 g-xl-8">
 
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.Purpose" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Project.Purpose" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.Purpose" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div> 
+        <div class="col-xl-6">
 
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.Unit" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Project.Unit" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.Unit" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.Description" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <textarea asp-for="Project.Description" class="form-control mb-2"></textarea>
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.Description" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.PRM_ProjectTypeId" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <select asp-for="Project.PRM_ProjectTypeId" asp-items="ViewBag.ProjectType" class="form-control">
-                                    <option disabled selected>Seçiniz</option>
-                                </select>
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.PRM_ProjectTypeId" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.StrategicPlanCode" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Project.StrategicPlanCode" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.StrategicPlanCode" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.PlanState" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <select asp-for="Project.PlanState" asp-items="ViewBag.ProjectType" class="form-control">
-                                    <option disabled selected>Seçiniz</option>
-                                </select>
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.PlanState" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.StartDate" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Project.StartDate" type="date" class="form-control mb-2" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.StartDate" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.EndDate" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Project.EndDate" type="date" class="form-control mb-2" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.EndDate" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.ProjectDuration" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Project.ProjectDuration" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.ProjectDuration" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Project.ApprovalStatusId" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <select asp-for="Project.ApprovalStatusId" asp-items="ViewBag.ApprovalStatus" class="form-control">
-                                    <option disabled selected>Seçiniz</option>
-                                </select>
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Project.ApprovalStatusId" class="text-danger"></span>
-                                </div>
-                            </div>
+            <div class="card card-flush py-4">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h2>Proje Genel Bilgileri</h2>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <label asp-for="Project.Name" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Project.Name" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.Name" class="text-danger"></span>
                         </div>
                     </div>
-                    <div class="card card-flush py-4">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <h2>Proje Detayları</h2>
-                            </div>
-                        </div>
-                        <div class="card-body pt-0">
-                            <label asp-for="Details.SubTechnologyName" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Details.SubTechnologyName" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Details.SubTechnologyName" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
+                </div>
 
-                        <div class="card-body pt-0">
-                            <label asp-for="Details.AvailableTRL" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Details.AvailableTRL" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Details.AvailableTRL" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="card-body pt-0">
-                            <label asp-for="Details.GoalTRL" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Details.GoalTRL" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Details.GoalTRL" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Details.AvailableTRLDocumentation" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Details.AvailableTRLDocumentation" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Details.AvailableTRLDocumentation" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Details.RiskPlan" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Details.RiskPlan" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Details.RiskPlan" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <label asp-for="Details.ImportantConsiderations" class="required form-label"></label>
-                            <div class="col-md-12">
-                                <input asp-for="Details.ImportantConsiderations" class="form-control mb-2" />
-                                <div class="fv-plugins-message-container invalid-feedback">
-                                    <span asp-validation-for="Details.ImportantConsiderations" class="text-danger"></span>
-                                </div>
-                            </div>
+                <div class="card-body pt-0">
+                    <label asp-for="Project.Purpose" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Project.Purpose" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.Purpose" class="text-danger"></span>
                         </div>
                     </div>
+                </div>
 
+                <div class="card-body pt-0">
+                    <label asp-for="Project.Unit" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Project.Unit" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.Unit" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Project.Description" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <textarea asp-for="Project.Description" class="form-control mb-2"></textarea>
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Project.PRM_ProjectTypeId" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <select asp-for="Project.PRM_ProjectTypeId" asp-items="ViewBag.ProjectType" class="form-control">
+                            <option disabled selected>Seçiniz</option>
+                        </select>
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.PRM_ProjectTypeId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card-body pt-0">
+                    <label asp-for="Project.StrategicPlanCode" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Project.StrategicPlanCode" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.StrategicPlanCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Project.PlanState" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <select asp-for="Project.PlanState" asp-items="ViewBag.ProjectType" class="form-control">
+                            <option disabled selected>Seçiniz</option>
+                        </select>
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.PlanState" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Project.StartDate" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Project.StartDate" type="date" class="form-control mb-2" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.StartDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Project.EndDate" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Project.EndDate" type="date" class="form-control mb-2" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.EndDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Project.ProjectDuration" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Project.ProjectDuration" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.ProjectDuration" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Project.ApprovalStatusId" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <select asp-for="Project.ApprovalStatusId" asp-items="ViewBag.ApprovalStatus" class="form-control">
+                            <option disabled selected>Seçiniz</option>
+                        </select>
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Project.ApprovalStatusId" class="text-danger"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-xl-6">
+            <div class="card card-flush py-4">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h2>Proje Detayları</h2>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <label asp-for="Details.SubTechnologyName" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Details.SubTechnologyName" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Details.SubTechnologyName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Details.AvailableTRL" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Details.AvailableTRL" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Details.AvailableTRL" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Details.GoalTRL" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Details.GoalTRL" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Details.GoalTRL" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Details.AvailableTRLDocumentation" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Details.AvailableTRLDocumentation" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Details.AvailableTRLDocumentation" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Details.RiskPlan" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Details.RiskPlan" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Details.RiskPlan" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Details.ImportantConsiderations" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Details.ImportantConsiderations" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Details.ImportantConsiderations" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-flush py-4" style="margin-top: 15px !important;">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h2>Proje Çıktıları</h2>
+                    </div>
+                </div>
+
+
+                <div class="card-body pt-0">
+                    <label asp-for="Output.PRM_OutputId" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <select asp-for="Output.PRM_OutputId" asp-items="ViewBag.ProjectType" class="form-control">
+                            <option disabled selected>Seçiniz</option>
+                        </select>
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Output.PRM_OutputId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="card-body pt-0">
+                    <label asp-for="Output.PRM_DocumentId" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <select asp-for="Output.PRM_DocumentId" asp-items="ViewBag.ProjectType" class="form-control">
+                            <option disabled selected>Seçiniz</option>
+                        </select>
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Output.PRM_DocumentId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Output.PRM_LiableId" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <select asp-for="Output.PRM_LiableId" asp-items="ViewBag.ProjectType" class="form-control">
+                            <option disabled selected>Seçiniz</option>
+                        </select>
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Output.PRM_LiableId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body pt-0">
+                    <label asp-for="Output.Product" class="required form-label"></label>
+                    <div class="col-md-12">
+                        <input asp-for="Output.Product" class="form-control mb-2" />
+                        <div class="fv-plugins-message-container invalid-feedback">
+                            <span asp-validation-for="Output.Product" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
     </div>
+
+
     <div class="d-flex justify-content-end">
         <a asp-area="" asp-controller="Projects" asp-action="Index" class="btn btn-light me-5"> İptal Et  </a>
         <input type="submit" class="btn btn-primary" value="Kaydet" />

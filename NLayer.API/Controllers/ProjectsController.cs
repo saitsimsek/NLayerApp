@@ -54,25 +54,68 @@ namespace NLayer.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(ProjectDto ProjectDto)
+        public async Task<IActionResult> Save(ProjectWithDetailDto projectWithDetailDto)
         {
-            Project project = new Project
+            Guid projectId = Guid.NewGuid();
+
+            List<ProjectDetail> details = new List<ProjectDetail>();
+            details.Add(new ProjectDetail
             {
                 Id = Guid.NewGuid(),
-                Name = ProjectDto.Name,
-                Purpose = ProjectDto.Purpose,
-                Unit = ProjectDto.Unit,
-                Description = ProjectDto.Description,
-                ApprovalStatusId = ProjectDto.ApprovalStatusId.Value,
+                ProjectId= projectId,
+                SubTechnologyName = projectWithDetailDto.Details.SubTechnologyName,
+                AvailableTRL = projectWithDetailDto.Details.AvailableTRL,
+                GoalTRL = projectWithDetailDto.Details.GoalTRL,
+                AvailableTRLDocumentation = projectWithDetailDto.Details.AvailableTRLDocumentation,
+                RiskPlan = projectWithDetailDto.Details.RiskPlan,
+                ImportantConsiderations = projectWithDetailDto.Details.ImportantConsiderations,
                 CreatedPersonalId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                 CreatedDate = DateTime.Now,
                 UpdatedPersonalId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
-                UpdatedDate =DateTime.Now,
-                State =true
+                UpdatedDate = DateTime.Now,
+                State = true
+            });
+
+            List<ProjectOutput> outputs = new List<ProjectOutput>();
+            outputs.Add(new ProjectOutput
+            {
+                Id = Guid.NewGuid(),
+                ProjectId = projectId,
+                PRM_OutputId = projectWithDetailDto.Output.PRM_OutputId,
+                PRM_DocumentId = projectWithDetailDto.Output.PRM_DocumentId,
+                PRM_LiableId = projectWithDetailDto.Output.PRM_LiableId,
+                Product = projectWithDetailDto.Output.Product,
+                CreatedPersonalId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                CreatedDate = DateTime.Now,
+                UpdatedPersonalId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                UpdatedDate = DateTime.Now,
+                State = true
+            });
+
+            Project project = new Project
+            {
+                Id = projectId,
+                Name = projectWithDetailDto.Project.Name,
+                Purpose = projectWithDetailDto.Project.Purpose,
+                Unit = projectWithDetailDto.Project.Unit,
+                Description = projectWithDetailDto.Project.Description,
+                ApprovalStatusId = projectWithDetailDto.Project.ApprovalStatusId.Value,
+                StartDate= projectWithDetailDto.Project.StartDate,
+                EndDate = projectWithDetailDto.Project.EndDate,
+                PRM_ProjectTypeId = projectWithDetailDto.Project.PRM_ProjectTypeId,
+                PlanState= projectWithDetailDto.Project.PlanState,
+                ProjectDuration= projectWithDetailDto.Project.ProjectDuration,
+                CreatedPersonalId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                CreatedDate = DateTime.Now,
+                UpdatedPersonalId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                UpdatedDate = DateTime.Now,
+                State = true,
+                ProjectDetails = details,
+                ProjectOutputs = outputs
             };
+
             await _service.AddAsync(project);
-            ProjectDto.Id = project.Id;
-            return CreateActionResult(CustomResponseDto<ProjectDto>.Success(201, ProjectDto));
+            return CreateActionResult(CustomResponseDto<ProjectWithDetailDto>.Success(201, projectWithDetailDto));
         }
 
         [HttpPut]
